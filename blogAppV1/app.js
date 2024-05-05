@@ -12,6 +12,10 @@ const app = express();
 
 app.set('view engine', 'ejs');
 
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(express.static("public"));
+
+
 app.get("/", (req, res)=>{
     res.render("home", {homeContent: homeStartingContent});
 })
@@ -24,17 +28,13 @@ app.get("/contact", (req, res)=>{
     res.render("contact", {contactContent: contactContent});
 })
 
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static("public"));
-
-
-
-
-
-
-
-
-
+app.get("/compose", (req, res)=>{
+    res.render("compose");
+})
+app.post("/compose", (req, res)=>{
+    let blog = req.body.postTitle;
+    console.log(blog);
+})
 
 
 
