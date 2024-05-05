@@ -2,5 +2,10 @@
 
 <h1>Home</h1>
 <p><%= homeContent %></p>
+<% posts.forEach((element)=>{ %>
+
+    <h2><%= element.title %></h2>
+    <p><%= element.body %></p>
+<% }) %>
 
 <%- include("partials/footer") -%>
